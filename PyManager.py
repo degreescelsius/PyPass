@@ -113,3 +113,19 @@ if option == 2:
             print(row)
     encrypt()
         
+if option == 3:
+    query = input("Search: ")
+
+    with open("credentials.csv", "r") as f:
+        reader = csv.reader(f)
+        found = False
+        for row in reader:
+            if any(query.lower() in field.lower() for field in row):
+                print(f"Name={row[0]}, Username={row[1]}, Password={row[2]}, URL={row[3]}")
+                found = True
+    
+            if not found:
+                print("No match found")
+                
+    encrypt()
+    
